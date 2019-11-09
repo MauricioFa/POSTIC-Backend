@@ -1,45 +1,53 @@
 const express = require('express');
-const { productsMock } = require('../utils/mocks/products.js');
+const ProductService = require('../services/products');
 
 function productsApi(app) {
     const router = express.Router();
     app.use('/api/products', router);
 
+    const productService = new ProductService();
+
     router.get('/', async function (req, res, next) {
+        const { tags } = req.query;
         try {
-            const products = await Promise.resolve(productsMock)
+            const products = await productService.getProducts({ tags })
             res.status(200).json({ data: products, message: 'products listed' })
         } catch (error) {
             next(error)
         }
     });
     router.get('/:productId', async function (req, res, next) {
+        const { productId } = req.params;
         try {
-            const products = await Promise.resolve(productsMock[0])
+            const products = await productService.getProduct({ productId })
             res.status(200).json({ data: products, message: 'products retrieved' })
         } catch (error) {
             next(error)
         }
     });
     router.post('/', async function (req, res, next) {
+        const { body: product } = req;   //{body : product} quiere decir que a body se le esta asignando un alias 
         try {
-            const createdProductId = await Promise.resolve(productsMock[0].id)
+            const createdProductId = await productService.createProduct({ product })
             res.status(201).json({ data: createdProductId, message: 'product created' })
         } catch (error) {
             next(error)
         }
     });
     router.put('/:productId', async function (req, res, next) {
+        const { productId } = req.params;
+        const { body: product } = req;
         try {
-            const updatedProductId = await Promise.resolve(productsMock[0].id)
+            const updatedProductId = await productService.updateProduct({ productId }, { product })
             res.status(200).json({ data: updatedProductId, message: 'product updated' })
         } catch (error) {
             next(error)
         }
     });
     router.delete('/:productId', async function (req, res, next) {
+        const { productId } = req.params;
         try {
-            const deletedProductId = await Promise.resolve(productsMock[0].id)
+            const deletedProductId = await productService.deleteProduct({ productId })
             res.status(200).json({ data: deletedProductId, message: 'product deleted' })
         } catch (error) {
             next(error)
