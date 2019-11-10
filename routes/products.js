@@ -11,7 +11,7 @@ function productsApi(app) {
         const { tags } = req.query;
         try {
             const products = await productService.getProducts({ tags })
-            res.status(200).json({ data: products, message: 'products listed' })
+            res.status(200).json(products)
         } catch (error) {
             next(error)
         }
@@ -20,7 +20,7 @@ function productsApi(app) {
         const { productId } = req.params;
         try {
             const products = await productService.getProduct({ productId })
-            res.status(200).json({ data: products, message: 'products retrieved' })
+            res.status(200).json(products)
         } catch (error) {
             next(error)
         }
@@ -29,7 +29,7 @@ function productsApi(app) {
         const { body: product } = req;   //{body : product} quiere decir que a body se le esta asignando un alias 
         try {
             const createdProductId = await productService.createProduct({ product })
-            res.status(201).json({ data: createdProductId, message: 'product created' })
+            res.status(201).json(createdProductId)
         } catch (error) {
             next(error)
         }
@@ -38,8 +38,8 @@ function productsApi(app) {
         const { productId } = req.params;
         const { body: product } = req;
         try {
-            const updatedProductId = await productService.updateProduct({ productId }, { product })
-            res.status(200).json({ data: updatedProductId, message: 'product updated' })
+            const updatedProductId = await productService.updateProduct({ productId , product })
+            res.status(200).json(updatedProductId)
         } catch (error) {
             next(error)
         }
@@ -48,7 +48,7 @@ function productsApi(app) {
         const { productId } = req.params;
         try {
             const deletedProductId = await productService.deleteProduct({ productId })
-            res.status(200).json({ data: deletedProductId, message: 'product deleted' })
+            res.status(200).json(deletedProductId)
         } catch (error) {
             next(error)
         }
