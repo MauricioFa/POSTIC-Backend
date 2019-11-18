@@ -1,0 +1,12 @@
+{
+    "name": "postic",
+    "version": 2,
+    "builds": [{"src":"index.js", "use": "@now/node"}],
+    "routes": [{"src": "/(.*)", "dest":"/index.js"}],
+    "env":{
+        "DB_USER": "@postic-db-user",
+        "DB_PASSWORD": "@postic-db-password",
+        "DB_HOST":"@postic-db-host",
+        "DB_NAME":"@postic-db-name"
+    }
+}

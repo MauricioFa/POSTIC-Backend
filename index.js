@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
 const { config } = require('./config/index');
@@ -6,6 +7,7 @@ const productsApi = require('./routes/products');
 
 //Middleware Body-parser
 app.use(express.json());
+app.use(cors());
 
 productsApi(app);
 
