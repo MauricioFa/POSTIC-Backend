@@ -1,24 +1,25 @@
 {
-  "name": "POSTIC-Backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "DEBUG=app:* nodemon index",
-    "start": "NODE_ENV=production node index"
-  },
+  "name": "postic_backend",
+  "version": "1.6.0",
+  "description": "Backend of APP Point Of Sale. Final student project Escuela JS 2019 Platzi.",
+  "homepage": "https://github.com/MauricioFa/POSTIC-Backend#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MauricioFa/POSTIC-Backend.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Caraballo Luis, Fajardo Mauricio, Nemogá Jorge",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/MauricioFa/POSTIC-Backend/issues"
   },
-  "homepage": "https://github.com/MauricioFa/POSTIC-Backend#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "DEBUG=app:* nodemon index",
+    "start": "NODE_ENV=production node index",
+    "format": "prettier --write '{*.js,**/*.js}'"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "debug": "^4.1.1",
