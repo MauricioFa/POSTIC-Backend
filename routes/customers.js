@@ -29,7 +29,9 @@ function customersApi(app) {
   router.post('/', async function(req, res, next) {
     const { body: customer } = req;
     try {
-      const createdCustomerId = await customersService.createCustomer({ customer });
+      const createdCustomerId = await customersService.createCustomer({
+        customer,
+      });
       res.status(201).json(createdCustomerId);
     } catch (error) {
       next(error);

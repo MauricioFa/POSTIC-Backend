@@ -5,7 +5,7 @@ class CustomerService {
     this.collection = 'customers';
     this.mongoDB = new MongoLib();
   }
-  
+
   async getCustomers({ tags }) {
     const query = tags && { tags: { $in: tags } };
     const customers = await this.mongoDB.getAll(this.collection, query);
@@ -18,7 +18,10 @@ class CustomerService {
   }
 
   async createCustomer({ customer }) {
-    const createCustomerId = await this.mongoDB.create(this.collection, customer);
+    const createCustomerId = await this.mongoDB.create(
+      this.collection,
+      customer
+    );
     return createCustomerId;
   }
 
@@ -32,7 +35,10 @@ class CustomerService {
   }
 
   async deleteCustomer({ customerId }) {
-    const deleteCustomer = await this.mongoDB.delete(this.collection, customerId);
+    const deleteCustomer = await this.mongoDB.delete(
+      this.collection,
+      customerId
+    );
     return deleteCustomer;
   }
 }

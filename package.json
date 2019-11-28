@@ -18,7 +18,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "DEBUG=app:* nodemon index",
     "start": "NODE_ENV=production node index",
-    "format": "prettier --write '{*.js}'"
+    "format": "prettier --write '{*.js,**/*.js}'"
   },
   "dependencies": {
     "cors": "^2.8.5",
